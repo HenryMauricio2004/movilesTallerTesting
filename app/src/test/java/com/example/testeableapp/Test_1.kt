@@ -1,0 +1,59 @@
+package com.example.testeableapp
+
+import com.example.testeableapp.ui.Screens.calculateTip
+import com.example.testeableapp.ui.Screens.calculateTotalPerPerson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Test
+import kotlin.math.ceil
+import org.junit.Assert.assertEquals
+import org.junit.Before
+
+class TipCalculatorTest
+{
+    @Before
+    fun setUp()
+    {
+        Dispatchers.setMain(StandardTestDispatcher())
+    }
+
+    @After
+    fun tearDown()
+    {
+        Dispatchers.resetMain()
+    }
+
+    //Tests
+
+    @Test
+    fun calculateTip_withRounding_isCorrect() {
+        val result = calculateTip(20.00, 37, true)
+
+        val trueApproxResult = ceil(7.4)//Debido a que se hace uso de aproximación
+
+        assertEquals(trueApproxResult, result, 0.001)
+    }
+
+    @Test
+    fun calculateTip_negativeAmount_returnsZero() {
+
+        val result = calculateTip(-20.0, 15, true)
+
+        assertEquals(0.0, result, 0.001)
+    }
+
+    @Test
+    fun calculateTotalPerPerson_isCorrect() {
+        val result = calculateTotalPerPerson (20.00, 37, true, 2)
+        // unica diferenica con el test1 es la solicitud de 2 personas más
+
+        val trueApproxResult = ceil(13.7)//Debido a que se hace uso de aproximación
+
+        assertEquals(trueApproxResult, result, 0.001)//
+    }
+
+}
+

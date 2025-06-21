@@ -119,3 +119,20 @@ fun calculateTip(amount: Double, tipPercent: Int, roundUp: Boolean): Double {
     }
     return tip
 }
+
+//Función extra para el cálculo del total por persona fuera del composable
+
+fun calculateTotalPerPerson( billAmount: Double, tipPercent: Int, roundUp: Boolean, numberOfPeople: Int ): Double
+{
+    val tip = calculateTip(billAmount, tipPercent, roundUp)
+
+    if (numberOfPeople <= 0)
+    {
+        return 0.0
+    }
+    else
+    {
+        return (billAmount + tip) / numberOfPeople
+    }
+
+}
