@@ -32,9 +32,11 @@ class Test_1
 
     @Test
     fun calculateTip_withRounding_isCorrect() {
+
+
         val result = calculateTip(20.00, 37, true)
 
-        val trueApproxResult = ceil(7.4)//Debido a que se hace uso de aproximación
+        val trueApproxResult = ceil(7.4)
 
         assertEquals(trueApproxResult, result, 0.001)
     }
@@ -50,9 +52,8 @@ class Test_1
     @Test
     fun calculateTotalPerPerson_isCorrect() {
         val result = calculateTotalPerPerson (20.00, 37, true, 2)
-        // unica diferenica con el test1 es la solicitud de 2 personas más
 
-        val trueApproxResult = ceil(13.7)//Debido a que se hace uso de aproximación
+        val trueApproxResult = ceil(13.7)
 
         assertEquals(trueApproxResult, result, 0.001)//
     }
