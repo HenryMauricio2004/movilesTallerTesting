@@ -12,12 +12,15 @@ import kotlin.math.ceil
 import org.junit.Assert.assertEquals
 import org.junit.Before
 
-class TipCalculatorTest
+class Test_1
 {
+
+    private val dispatcher = StandardTestDispatcher()
+
     @Before
     fun setUp()
     {
-        Dispatchers.setMain(StandardTestDispatcher())
+        Dispatchers.setMain(dispatcher)
     }
 
     @After
@@ -26,7 +29,6 @@ class TipCalculatorTest
         Dispatchers.resetMain()
     }
 
-    //Tests
 
     @Test
     fun calculateTip_withRounding_isCorrect() {
